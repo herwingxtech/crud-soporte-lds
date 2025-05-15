@@ -1,0 +1,47 @@
+       <!-- Sección Lógin -->
+      <div class="login-wrapper">
+         <form method="post" action="#" role="form" class="validate">
+           <div class="popup-header">
+            <span class="text-semibold">Iniciar Sesión</span>
+            <div class="btn-group pull-right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i></a>
+              <ul class="dropdown-menu icons-right dropdown-menu-right">
+                <li><a href="#"><i class="icon-info"></i> Olvidate tu clave?</a></li>
+                <li><a href="#"><i class="icon-support"></i> Contactar Admin</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="well">
+            <?php if(isset($this->_error)){?>
+            <div class="alert alert-<?php echo $this->alerta?> fade in block-inner">
+              <button type="button" class="close" data-dismiss="alert"><i>x</i></button><?php echo $this->_error?>
+              <i class="<?php echo $this->icon;?>"></i>
+            </div>
+            <?php };?>
+            <div class="form-group has-feedback">
+              <label>Usuario</label>
+              <span id="alertUsername" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">  
+                  <input class="form-control" type="text" name="nombre_user" id="nombre_user" placeholder="Usuario" data-validation-required-message="Ingresa tu nombre de usuario">
+              <i class="icon-users form-control-feedback"></i>
+              </span>
+              <p class="help-block"></p>
+            </div>
+            <div class="form-group has-feedback">
+              <label>Contraseña</label>
+              <span id="alertPass" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                  <input type="password" name="pass_user" class="required form-control" placeholder="Contraseña" id="passwd" data-validation-required-message="Ingresa tu contraseñ">
+                  <i class="icon-lock form-control-feedback"></i>
+                </span>
+            </div>
+            <div id="success"></div>
+            <div class="row form-actions">
+              <div class="col-xs-12">
+                <button type="submit" class="btn btn-warning pull-right" id="enviar"><i class="icon-menu2" ></i> Enviar</button>
+              </div>
+            </div>
+            <input type="hidden" id="enviara" value="4" name="ingresar"/>
+          </div>
+        </form>
+      </div>
+      <!-- /Sección Login -->
+    

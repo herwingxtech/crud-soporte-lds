@@ -1,0 +1,18 @@
+    <!-- Menú principal -->
+    <ul class="navigation">
+      <?php
+      if(isset($menuPrincipal)){
+        foreach ($menuPrincipal AS $mp) {
+          $item_style="";
+          if(View::getViewId() && $mp['id'] == View::getViewId()){
+            $item_style='active';
+          };?>
+          <li class="<?php echo $item_style?>">
+            <a href="javascript:void(0);" onclick="location.href='<?php echo $mp['url']?>'">
+              <span><?php echo $mp['titulo']?></span><i class="<?php echo $mp['icon']?>"></i>
+            </a>
+          </li>
+          <?php }
+        };?>
+    </ul>
+    <!-- /Menú principal -->

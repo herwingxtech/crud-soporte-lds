@@ -1,0 +1,196 @@
+ <!-- Sección del formulario agregar dispositivos -->
+ <div class="row">
+            <div class="col-md-6">
+              <!-- Sección del panel interior del formulario -->
+              <form class="form-horizontal form-separate " action="" role="form" method="post" onsubmit="return registroPuntoVenta()">
+                <input type="hidden" name="registrar" value="4"/>
+                <input type="hidden" id="ciudad" name="ciudad" value=""/>
+                <input type="hidden" id="colonia" name="colonia" value=""/>
+                <div class="panel panel-default">
+                  <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i><?php echo $this->titulo;?></h6></div>
+                  <div class="panel-body">
+                  <div class="form-group">
+                    
+                    <div class="col-md-12">
+                      <input type="text"  minlength="32" maxlength="32" id="apikey" name="apikey" placeholder="Api Key" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['apikey']; }?>">
+                      <label class="message"></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    
+                    <div class="col-md-6">
+                      <select  id="operacion" name="operacion" data-placeholder="Tipo de operacion..." class="select-full required"  tabindex="2">
+                              <option value="0">Sin cambios</option>
+                              <option value="1">Alta de punto de venta</option>
+                              <option value="2">Baja de punto de venta</option>
+                              <option value="3">Cambio de los datos actuales del punto de venta</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" id="identificador" name="identificador" placeholder="Identificador" class="form-control required" value="">
+                      <label class=""></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-6">
+                      <input type="text" id="nombreTienda" name="nomTienda" style="text-transform: uppercase;" placeholder="Nombre de tienda" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['numExterior']; }?>">
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" id="comercio" name="comercio" placeholder="Comercio" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['telefono']; }?>">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-md-6">
+                        <select id="tipo-calle" name="tipoCalle" data-placeholder="Tipo de calle..." class="select-full required" tabindex="2">
+                            <option value="00">Tipo de calle...</option>
+                            <option value="01">Acceso</option>
+                            <option value="02">Ampliación</option>
+                            <option value="03">Andador</option>
+                            <option value="04">Autopista</option>
+                            <option value="05">Avenida</option>
+                            <option value="06">Boulevard</option>
+                            <option value="07">Calle</option>
+                            <option value="08">Callejón</option>
+                            <option value="09">Calzada</option>
+                            <option value="10">Camino</option>
+                            <option value="11">Carretera</option>
+                            <option value="12">Cerrada</option>
+                            <option value="13">Glorieta</option>
+                            <option value="14">Privada</option>
+                            <option value="15">Prolongación</option>
+                            <option value="16">Retorno</option>
+                            <option value="17">Vía</option>
+                            <option value="99">Acceso</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                          <input type="text" name="calle" placeholder="Calle" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['numExterior']; }?>"> 
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    
+                      <div class="col-md-6">
+                          <input type="text" name="numExterior" id="numExterior" placeholder="Número Exterior" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                      <div class="col-md-6">
+                          <input type="text" name="numInterior"  id="numInterior" placeholder="Múmero Interior" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                  </div>
+                    <div class="form-group">
+                    
+                      <div class="col-md-12">
+                          <input type="text" name="detalleDireccion" placeholder="Detalle Dirección" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                  </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label"><i class="icon-screen2"></i>Estado:</label>
+                      <div class="col-md-4">
+                        <select id="estado" name="estado" data-placeholder="Seleccionar Estado..." class="select-full required" tabindex="2">
+                            <option value=""></option>
+                            
+                            <?php foreach ($this->estados as $e) { ?>
+                            <option value="<?php echo $e['c_estado']?>" ><?php echo $e['d_estado']?></option>
+                            <?php };?>
+                        </select>
+                      </div>
+                      <label class="col-md-2 control-label"><i class="icon-direction"></i>Municipio:</label>
+                      <div class="col-md-4">
+                        <select id="municipios" name="municipios" data-placeholder="Seleccionar Municipio..." class="select-full required" tabindex="2">
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-md-2 control-label"><i class="icon-earth"></i>Localidad:</label>
+                      <div class="col-md-4">
+                        <select id="localidades" name="localidades" data-placeholder="Seleccionar Localidad..." class="select-full required" tabindex="2">
+                        </select>
+                      </div>
+                      <label class="col-sm-2 control-label"><i class="icon-calendar"></i>C.P. : </label>
+                      <div class="col-sm-4">
+                        <input type="text" name="cp" id="cp" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['fechaIngreso'];}?>">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    
+                      <div class="col-md-6">
+                          <input type="text" minlength="1" maxlength="2" id="iva" name="iva" placeholder="IVA" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                      <div class="col-md-6">
+                          <input type="text" name="subdivision" placeholder="Subdivisión" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    
+                      <div class="col-md-6">
+                          <input type="text" name="entreCalle" placeholder="Entre calle" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                      <div class="col-md-6">
+                          <input type="text" name="yCalle" placeholder="Y entre calle" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    
+                    <div class="col-md-4">
+                        <input type="text" name="longitud" id="longitud" placeholder="Longitud" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="latitud" id="latitud" placeholder="Latitud" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="altitud" id="altitud" placeholder="Altitud" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    
+                      <div class="col-md-6">
+                        <select id="inicioLabor" name="inicioLabor" data-placeholder="Inicio de labor..." class="select-full required" tabindex="2">
+                              <option value="0">Inicio de labor...</option>
+                              <option value="1">Lunes</option>
+                              <option value="2">Martes</option>
+                              <option value="3">Miércoles</option>
+                              <option value="4">Jueves</option>
+                              <option value="5">Viernes</option>
+                              <option value="6">Sábado</option>
+                              <option value="7">Domingo</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                      <select id="finLabor" name="finLabor" data-placeholder="Finde labor..." class="select-full required" tabindex="2">
+                              <option value="0">Fin de labor...</option>
+                              <option value="1">Lunes</option>
+                              <option value="2">Martes</option>
+                              <option value="3">Miércoles</option>
+                              <option value="4">Jueves</option>
+                              <option value="5">Viernes</option>
+                              <option value="6">Sábado</option>
+                              <option value="7">Domingo</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    
+                      <div class="col-md-4">
+                          <input type="text" name="horaInicioLaboral" placeholder="Hora Inicio Labores" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                      <div class="col-md-4">
+                          <input type="text" name="horaFinLaboral" placeholder="Hora Fin Labores" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" name="fecha" id="fecha" class="form-control required" data-mask="99/99/9999" value="<?php if(isset($this->datos)){ echo $this->datos['fechaIngreso'];}?>">
+  	                    <span class="help-block">dd/mm/aaaa</span>
+                      </div>
+                  </div>
+
+                    <div class="form-actions text-right">
+                      <input type="reset" value="Cancelar" class="btn btn-danger">
+                      <input type="submit" value="Enviar" class="btn btn-primary">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- /Sección del panel interior del formulario -->
+
+            </div>
+          </div>
+<!-- /Sección del formulario-->

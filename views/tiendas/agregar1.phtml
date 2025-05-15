@@ -1,0 +1,74 @@
+<!-- Sección del formulario agregar tiendas -->
+<div class="row">
+  <div class="col-md-6">
+    <!-- Sección del panel interior del formulario -->
+    <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+      <input type="hidden" name="registrar" value="4"/>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+        <div class="panel-body">
+
+        <div class="form-group">
+          <label class="col-md-2 control-label"><i class="icon-laptop"></i>Tienda:</label>
+          <div class="col-md-4">
+            <input type="text" name="nombre" placeholder="Nombre" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+          </div>
+          <label class="col-md-2 control-label"><i class="icon-bookmarks"></i>Dirección:</label>
+          <div class="col-md-4">
+            <input type="text" name="direccion" placeholder="Dirección" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['direccion']; }?>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label"><i class="icon-laptop"></i>Número Exterior:</label>
+          <div class="col-md-4">
+            <input type="text" name="numExterior" placeholder="Número Exterior" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['numExterior']; }?>">
+          </div>
+          <label class="col-md-2 control-label"><i class="icon-bookmarks"></i>Teléfono:</label>
+          <div class="col-md-4">
+            <input type="text" name="telefono" placeholder="Teléfono" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['telefono']; }?>">
+          </div>
+        </div>
+
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-screen2"></i>Estado:</label>
+            <div class="col-md-4">
+              <select id="estado" name="estado" data-placeholder="Seleccionar Estado..." class="select-full required" tabindex="2">
+                  <option value=""></option>
+
+                  <?php foreach ($this->estados as $e) { ?>
+                  <option value="<?php echo $e['idEstado']?>" ><?php echo $e['estado']?></option>
+                  <?php };?>
+              </select>
+            </div>
+            <label class="col-md-2 control-label"><i class="icon-direction"></i>Municipio:</label>
+            <div class="col-md-4">
+              <select id="municipios" name="municipios" data-placeholder="Seleccionar Municipio..." class="select-full required" tabindex="2">
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-earth"></i>Localidad:</label>
+            <div class="col-md-4">
+              <select id="localidades" name="localidades" data-placeholder="Seleccionar Localidad..." class="select-full required" tabindex="2">
+              </select>
+            </div>
+            <label class="col-sm-2 control-label"><i class="icon-calendar"></i>Fecha de Ingreso: </label>
+  					<div class="col-sm-4">
+  	          <input type="text" name="fechaIngreso" class="form-control required" data-mask="99/99/9999" value="<?php if(isset($this->datos)){ echo $this->datos['fechaIngreso'];}?>">
+  	          <span class="help-block">dd/mm/aaaa</span>
+  					</div>
+          </div>
+          <div class="form-actions text-right">
+            <input type="hidden" id="mensaje" value="">
+            <input type="reset" value="Cancelar" class="btn btn-danger">
+            <input type="submit" value="Registrar" class="btn btn-primary">
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- /Sección del panel interior del formulario -->
+
+  </div>
+</div>
+<!-- /Sección del formulario-->

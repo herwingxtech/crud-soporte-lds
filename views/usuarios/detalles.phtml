@@ -1,0 +1,91 @@
+<!-- Vista detalles de usuarios -->
+<!-- List groups -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h6 class="panel-title"><i class="icon-paragraph-justify"></i> <?php echo $this->titulo;?></h6>
+				</div>
+
+				<div class="panel-body">
+					<div class="row">
+
+						<div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="clearfix">
+                                <div class="well">
+                                   <div class="mensaje">
+                                       
+                                   </div>
+                                    <a><img id="img-perfil" class="example-image" src="<?php echo BASE_PUBLIC_IMG .'avatares/' . $this->_id .'/'. $this->_foto?>" alt="<?php echo $this->_nombre?>" width="100%" /></a>
+                                </div>
+                                  <form method="post" enctype="multipart/form-data">
+                                   <center><br>
+                                   <input type="hidden" name="fotoPerfil" value="4">
+                                    <button type="button" class="btn btn-default" id="btnCambiarFoto">
+                                        Cambiar foto de perfil
+                                    </button>
+                                    </center>
+                                    <div id="subirImagen">
+                                        <input type="file" class="form-control"  id="datosImagen" name="datosImagen">
+                                        <br>
+                                        <img class="previsualizar">
+                                        <center>
+                                        <button type="submit" class="btn btn-default" id="btnCambiarFoto">
+                                           Guardar
+                                    </button>
+                                    </center>
+                                    </div>
+                                    </form>
+                            </div>
+						</div>
+						<div class="col-md-6">
+							<div class="clearfix">
+
+								<div class="well">
+									<div class="list-group">
+										<a href="#" class="list-group-item">
+											<i class="icon-laptop"></i><h6 class="list-group-item-heading"><?php echo $this->_nombreCompleto;?></h6>
+											<p class="list-group-item-text">Nombre completo.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-home2"></i><h6 class="list-group-item-heading"><?php echo $this->_email;?></h6>
+											<p class="list-group-item-text">cuenta de correo electrónico.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-bookmarks"></i><h6 class="list-group-item-heading"><?php if($this->_clave) { echo $this->_clave; }?></h6>
+											<p class="list-group-item-text">Contraseña del correo.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-bookmark"></i><h6 class="list-group-item-heading"><?php echo $this->_direccion;?></h6>
+											<p class="list-group-item-text">Domicilio.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-screen2"></i><h6 class="list-group-item-heading"><?php echo $this->_fechaNacimiento;?></h6>
+											<p class="list-group-item-text">Fecha de nacimiento.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-direction"></i><h6 class="list-group-item-heading"><?php echo $this->_dep?></h6>
+											<p class="list-group-item-text">Departamento.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-earth"></i><h6 class="list-group-item-heading"><?php echo $this->_nomSucursal?></h6>
+											<p class="list-group-item-text">Sucursal.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-dashboard"></i><h6 class="list-group-item-heading"><?php echo $this->_fechaIngreso;?></h6>
+											<p class="list-group-item-text">Fecha de ingreso.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-stack"></i><h6 class="list-group-item-heading"><?php echo $this->_status;?></h6>
+											<p class="list-group-item-text">Status.</p>
+										</a>
+										<a href="#" class="list-group-item">
+											<i class="icon-storage"></i><h6 class="list-group-item-heading"><?php echo $this->_comentario;?></h6>
+											<p class="list-group-item-text">Comentarios.</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /list groups -->

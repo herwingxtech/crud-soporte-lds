@@ -1,0 +1,41 @@
+  <!-- Formaulario Asignar IP -->
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Panel del formulario-->
+      <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+        <input type="hidden" name="asignarip" value="4"/>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+          <div class="panel-body">
+            <div class="block-inner">
+              <div class="block-inner">
+                <h6 class="heading-hr">
+                  <i class="icon-laptop"></i> <?php echo $this->_nombre?> <small class="display-block">Dirección IP: <?php echo $this->_ip?></small>
+                </h6>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Dirección IP:</label>
+              <div class="col-md-4">
+                <input type="text" name="ip" placeholder="192.168.0.*" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['ip']; }?>">
+              </div>
+              <label class="col-md-2 control-label"><i class="icon-earth"></i>Sucursal:</label>
+              <div class="col-md-4">
+                <select name="sucursal" data-placeholder="Seleccionar sucursal..." class="select required" tabindex="2">
+                  <option value=""></option>
+                  <option value="Tuxtla">Tuxtla</option>
+                  <option value="Tapachula">Tapachula</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-actions text-right">
+              <input type="reset" onclick="location.href='<?php echo $this->urlCatalogo;?>'" value="Cancelar" class="btn btn-danger">
+              <input type="submit" value="Asignar" class="btn btn-primary">
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- /panel del formulario-->
+    </div>
+  </div>
+  <!-- /Formulario asignar IP -->

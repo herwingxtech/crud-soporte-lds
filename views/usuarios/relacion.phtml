@@ -1,0 +1,58 @@
+<!-- Default datatable inside panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <i class="icon-table"></i> <?php echo $this->titulo?>
+    </h6>
+  </div>
+  <div class="datatable-state-saving">
+    <table class="table table-hover tabled-bordered">
+      <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Nombre(s)</th>
+            <th>Email</th>
+            <th>computadora</th>
+            <th>Serie</th>
+            <th>Departamento</th>
+            <th>Sucursal</th>
+            <th>Status</th>
+            <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->relacion AS $usrs) {
+        ?>
+          <tr>
+            <td>
+              <a class="example-image-link" href="<?php echo BASE_PUBLIC_IMG .'avatares/' . $usrs['avatarUsuario']?>" data-lightbox="example-1">
+                <img class="img-thumbnail" width="70px" src="<?php echo BASE_PUBLIC_IMG .'avatares/'.$usrs['idUSUARIO']. '/'. $usrs['avatarUsuario']?>" alt="image-1" />
+              </a>
+            </td>
+            <td><?php echo $usrs['nomUsuario']. " " . $usrs['apellidosUsuario']?></td>
+            <td><?php echo $usrs['mailUsuario']?></td>
+            <td><?php echo $usrs['nomComputadora']?></td>
+            <td><?php echo $usrs['serieComputadora']?></td>
+            <td><?php echo $usrs['depUsuario']?></td>
+            <td><?php echo $usrs['nombreSucursal']?></td>
+            <td><?php echo $usrs['statusCompUsr']?></td>
+            <td>
+              <div class="pull-center icons-group">
+                <?php if($usrs['statusCompUsr'] == "asignada") {?>
+  		          <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'usuarios/liberar/' . base64_encode($usrs['idUSUARIO']) .'/' . base64_encode($usrs['idCOMPUTADORA'])?>/'">
+                  <i class="icon-pencil"></i>
+                </a><a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlResguardo . base64_encode($usrs['idCOMPUTADORA'])?>/'">
+                <i class="icon-paste"></i>
+              </a>
+                <?php } else {?>
+                <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'usuarios/eliminar/' . base64_encode($usrs['idUSUARIO']) .'/' . base64_encode($usrs['idCOMPUTADORA'])?>/'"><i class="icon-remove"></i></a>
+                <?php }?>
+  	           </div>
+            </td>
+          </tr>
+        <?php
+        }?>
+      </tbody>
+    </table>
+  </div>
+</div>

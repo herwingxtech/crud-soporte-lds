@@ -1,0 +1,35 @@
+<!-- Separated form -->
+<div class="row">
+  <div class="col-md-6">
+    <!-- Separated form inside panel -->
+    <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+      <input type="hidden" name="agregar_clave" value="4"/>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+          <div class="panel-body">
+            <div class="block-inner">
+              <div class="block-inner">
+                <h6 class="heading-hr">
+                <i class="icon-user"></i> <?php echo $this->_nombreCompleto?> <small class="display-block">Correo Electrónco: <?php echo $this->_email?></small>
+                </h6>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label">Contraseña:</label>
+              <div class="col-md-12">
+                <input type="text" name="contrasena" placeholder="Registrar clave" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['ip']; }?>">
+              </div>
+            </div>
+            <div class="form-actions text-right">
+              <input type="reset" onclick="location.href='<?php echo BASE_URL?>usuarios/catalogo/'" value="Cancelar" class="btn btn-danger">
+              <input type="submit" value="Registrar" class="btn btn-primary">
+            </div>
+
+          </div>
+        </div>
+    </form>
+    <!-- /separated form inside panel -->
+
+  </div>
+</div>
+<!-- /separated form -->

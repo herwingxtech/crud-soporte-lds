@@ -1,0 +1,66 @@
+  <!-- Tabla catálogo computadoras -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h6 class="panel-title"><i class="icon-table"></i> <?php echo $this->titulo?></h6>
+    </div>
+    <div class="datatable-state-saving" id="table-ajax">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Computadora</th>
+          <th>IP</th>
+          <th>MAC</th>
+          <th>Serie</th>
+          <th>Sistema Operativo</th>
+          <th>Departamento</th>
+          <th>Sucursal</th>
+          <th>Municipio</th>
+          <th>Status</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach ($this->pcs AS $pcs) { ?>
+        <tr>
+          <td><?php echo $pcs['nomComputadora']?></td>
+          <td><?php echo $pcs['numIP']?></td>
+          <td><?php echo $pcs['MAC']?></td>
+          <td><?php echo $pcs['serieComputadora']?></td>
+          <td><?php echo $pcs['OS']?></td>
+          <td><?php echo $pcs['depComputadora']?></td>
+          <td><?php echo $pcs['nombreSucursal']?></td>
+          <td><?php echo $pcs['municipio']?></td>
+          <td><?php echo $pcs['nomStatus']?></td>
+          <td>
+            <div class="pull-center icons-group">
+              <a data-original-title="Detalles" data-placement="top" href="javascript:void(0);" onclick="location.href='<?php echo $this->urlDetalles . base64_encode($pcs['idCOMPUTADORA'])?>/'" >
+                <i class="icon-info2"></i>
+              </a>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlActualizar . base64_encode($pcs['idCOMPUTADORA'])?>/'">
+                <i class="icon-pencil"></i>
+              </a>
+              <a rel="tooltip" data-original-title="Eliminar" idPC="<?php echo base64_encode($pcs['idCOMPUTADORA'])?>"  class="libera-ip btn btn-link btn-danger btn-just-icon"><i class="material-icons">delete</i></a>
+              <?php if($pcs['numIP'] != "SIN IP"){ ?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlliberarIP.base64_encode($pcs['idCOMPUTADORA']);?>/1/'">
+                <i class="icon-connection"></i>
+              </a>
+              <?php }else{?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlasignarIP . base64_encode($pcs['idCOMPUTADORA'])?>/'">
+                <i class="icon-cog"></i>
+              </a>
+              <?php }?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlReporte . base64_encode($pcs['idCOMPUTADORA'])?>/'">
+                <i class="icon-paste2"></i>
+              </a>
+              <?php if($pcs['nomStatus'] == "Baja") { ?><a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlEliminar . base64_encode($pcs['idCOMPUTADORA'])?>/'"><i class="icon-remove"></i></a>
+              <?php } else {?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlBaja . base64_encode($pcs['idCOMPUTADORA'])?>/'"><i class="icon-minus-circle2"></i></a>
+              <?php };?>
+            </div>
+          </td>
+        </tr><?php }?>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--/ Tabla catálogo computadoras -->

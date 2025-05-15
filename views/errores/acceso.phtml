@@ -1,0 +1,18 @@
+<!-- Error wrapper -->
+	<div class="error-wrapper text-center">
+	    <h1><?php echo $this->_codigo;?></h1>
+        <h6>- Oops, <?php echo $this->mensaje ?>! -</h6>
+
+        <!-- Error content -->
+        <div class="error-content">
+
+	        <div class="row">
+		        <div class="col-md-6">
+		            <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL;?>'" class="btn btn-danger btn-block">Regresar a la página principal</a>
+	            </div>
+	        </div>
+        </div>
+        <!-- /error content -->
+
+	</div>
+	<!-- /error wrapper -->

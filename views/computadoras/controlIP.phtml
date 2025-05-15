@@ -1,0 +1,47 @@
+  <!-- Tabla de direcciones IP -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h6 class="panel-title"><i class="icon-table"></i> <?php echo $this->titulo?></h6>
+    </div>
+    <div class="datatable-tools">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>DIRECCIÓN</th>
+            <th>TIPO</th>
+            <th>COMENTARIOS</th>
+            <th>SUCURSAL</th>
+            <th>STATUS</th>
+            <th>FECHA</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($this->ips AS $ips) { ?>
+          <tr>
+            <td><?php echo $ips['numIP']?></td>
+            <td><?php echo $ips['tipoIP']?></td>
+            <td><?php echo $ips['comentarioIP']?></td>
+            <td><?php echo $ips['sucursal']?></td>
+            <td><?php echo $ips['statusIP']?></td>
+            <td><?php echo $ips['fechaActualizarIP']?></td>
+            <td>
+              <div class="pull-center icons-group">
+              <?php if($ips['statusIP'] == "Reservada"){ ?>
+                <a data-original-title="Detalles" data-placement="top" href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'computadoras/liberarIP/' . base64_encode($ips['idIP'])?>/2/'">
+                  <i class="icon-lock2"></i>
+                </a>
+              <?php } else{ ?>
+                <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'computadoras/reservarIP/' . base64_encode($ips['idIP'])?>/'">
+                  <i class="icon-unlocked"></i>
+                </a>
+              <?php }?>
+              </div>
+            </td>
+          </tr>
+        <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Tabla de direcciones IP -->

@@ -1,0 +1,100 @@
+<?php if(isset($this->mensaje)){ ?>
+<!-- alertas -->
+<div class="callout callout-<?php echo $this->alerta;?> fade in">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <h5><?php echo $this->mensaje?></h5>
+</div>
+<!-- /alertas -->
+<?php };?>
+<!-- Tabla dinámica mantenimiento -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title"><i class="icon-table"></i> <?php echo $this->titulo?></h6>
+  </div>
+  <div class="datatable-state-saving">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <th>Computadora</th>
+        <th>Nombre</th>
+        <th>Departamento</th>
+        <th>Serie</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+      <?php foreach ($this->bitacora as $b) {?>
+      <tr>
+        <td><?php echo $b['nomComputadora']?></td>
+        <td><?php echo $b['nomMantenimiento']?></td>
+        <td><?php echo $b['depComputadora']?></td>
+        <td><?php echo $b['serieComputadora']?></td>
+        <td>
+          <div class="pull-center icons-group">
+           
+            <a class="detalle-bitacora" href="#iconified_modal" data-toggle="modal" idBitacora="<?php echo base64_encode($b['idMANTENIMIENTO'])?>"><i class="icon-info"></i></a>
+            <a class="delete-bitacora" idBitacora="<?php echo base64_encode($b['idMANTENIMIENTO'])?>" >
+            <i class="icon-remove"></i></a>
+          </div>
+        </td>
+      </tr>
+      <?php };?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Ventana modal detalles de mantenimiento -->
+<div id="iconified_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title"><i class="icon-paragraph-justify2"></i> Detalle de mantenimiento</h4>
+            </div>
+            <div class="modal-body with-padding">
+                <table class="table table-striped datatable-selectable">
+                    <tbody>
+                        <tr>
+                            <td><h5><i class="icon-laptop"></i> Nombre:</h5></td>
+                            <td><h5><span class="nomPC"></span></h5></td>
+                        </tr>
+                        <tr>
+                            <td><h5><i class="icon-bookmarks"></i> Marca:</h5></td>
+                            <td><h5><span class="marcaPC"></span></h5></td>
+                        </tr>
+                        <tr>
+                            <td><h5><i id="icono" class="icon-windows8"></i> Sistema Operativo:</h5></td>
+                            <td><h5><span class="osPC"></span></h5></td>
+                        </tr>
+                        <tr>
+                            <td><h5><i class="icon-direction"></i> Departamento:</h5></td>
+                            <td><h5><span class="depPC"></span></h5></td>
+                        </tr>
+                        <tr>
+                            <td><h5><i class="icon-direction"></i> Sucursal:</h5></td>
+                            <td><h5><span class="sucPC"></span></h5></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><h5><i class="icon-calendar"></i> Ingreso: <br><span class="ingreso"></span></h5></td>
+                            <td><h5><i class="icon-calendar"></i> Salida: <br><span class="salida"></span></h5></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr>
+                <h5><i class="icon-paste2"></i> <span class="mantenimientoPC text-right"></span></h5>
+                <hr>
+                <h5><i class="icon-warning"></i> Diagnóstico: </h5>
+                
+                <p class="diagnostico"></p>
+                <hr>
+                <h5><i class="icon-warning"></i> Solución: </h5>
+                <p class="solucion"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" data-dismiss="modal"><i class="icon-cancel-circle"></i> Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Ventana modal detalles de mantenimiento -->

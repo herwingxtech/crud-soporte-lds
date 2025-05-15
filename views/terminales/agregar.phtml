@@ -1,0 +1,105 @@
+<!-- Formulario agregar terminales -->
+<div class="row">
+  <div class="col-md-6">
+    <!-- Panel del formulario -->
+    <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+      <input type="hidden" name="registrar" value="4"/>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-temin"></i>Nombre:</label>
+            <div class="col-md-4">
+              <input type="text" name="nombre" placeholder="Nombre" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['nombre']; }?>">
+            </div>
+            <label class="col-md-2 control-label"><i class="icon-home2"></i>Usuario:</label>
+            <div class="col-md-4">
+              <input type="text" name="usuario" placeholder="Usuario" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['usuario']; }?>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-bookmarks"></i>Marca:</label>
+            <div class="col-md-4">
+              <input type="text" name="marca" placeholder="Marca" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['marca']; }?>">
+            </div>
+            <label class="col-md-2 control-label"><i class="icon-bookmark"></i>Modelo:</label>
+            <div class="col-md-4">
+              <input type="text" name="modelo" placeholder="Modelo" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['modelo']; }?>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-barcode2"></i>Serie:</label>
+            <div class="col-md-4">
+              <input type="text" name="serie" placeholder="Serie" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['serie']; }?>">
+            </div>
+            <label class="col-md-2 control-label"><i class="icon-dashboard"></i>Procesador (®,™):</label>
+            <div class="col-md-4">
+              <input type="text" name="procesador" placeholder="Procesador" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['procesador']; }?>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-stack"></i>RAM:</label>
+            <div class="col-md-4">
+              <select name="ram" data-placeholder="Seleccionar RAM..." class="select-full required" tabindex="2">
+                <option value=""></option>
+                <?php foreach ($this->_ram as $r) {?>
+                <option value="<?php echo $r?>" <?php if(isset($this->datos) && $r == $this->datos['ram']){ echo "selected";};?>><?php print $r;?></option>
+                <?php } ?>
+              </select>
+            </div>
+
+            <label class="col-md-2 control-label"><i class="icon-storage"></i>Almacenamiento:</label>
+            <div class="col-md-4">
+              <select name="hd" data-placeholder="Seleccionar Unidad..." class="select-full" tabindex="2">
+                <option value=""></option>
+                <?php foreach ($this->_hd as $hd){?>
+                  <option value="<?php echo $hd?>" <?php if(isset($this->datos) && $hd == $this->datos['hd']){ echo "selected";};?>><?php print $hd;?></option>
+                  <?php }?>
+                </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"><i class="icon-android"></i>Sistema Operativo:</label>
+            <div class="col-md-4">
+              <input type="text" name="so" placeholder="Sistema Operativo" class="form-control required" value="<?php if(isset($this->datos)){ echo $this->datos['so']; }?>">
+            </div>
+              <label class="col-sm-2 control-label"><i class="icon-calendar"></i>Fecha de Ingreso: </label>
+              <div class="col-sm-4">
+                <input type="text" name="fechaIngreso" class="form-control required" data-mask="99/99/9999" value="<?php if(isset($this->datos)){ echo $this->datos['fechaIngreso'];}?>">
+                <span class="help-block">dd/mm/aaaa</span>
+              </div>
+          </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label"><i class="icon-earth"></i>Sucursal:</label>
+              <div class="col-md-4">
+                <select name="sucursal" data-placeholder="Seleccionar sucursal..." class="select-full required" tabindex="2">
+                  <option value=""></option>
+                <?php foreach ($this->sucursal AS $s){ ?>
+                  <option value="<?php echo $s['idSucursal'];?>" <?php if(isset($this->datos) && $s['idSucursal'] == $this->datos['sucursal']){ echo "selected"; }?>><?php echo $s['nombreSucursal'];?></option>
+                <?php }?>
+                </select>
+              </div>
+              <label class="col-md-2 control-label"><i class="icon-direction"></i>Departamento:</label>
+              <div class="col-md-4">
+                <input type="text" name="departamento" placeholder="Departamento" class="form-control required" value="<?php if(isset($this->datos)) { echo $this->datos['departamento']; }?>">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label"><i class="icon-info"></i>Descripción:</label>
+              <div class="col-md-10">
+                <textarea rows="5" cols="5" name="descripcion" placeholder="Descripción..." class="elastic form-control"><?php if(isset($this->datos)){ echo $this->datos['descripcion']; }?></textarea>
+              </div>
+            </div>
+            <div class="form-actions text-right">
+              <input type="reset" onclick="location.href='<?php echo $this->url;?>'" value="Cancelar" class="btn btn-danger">
+              <input type="submit" value="Registrar" class="btn btn-primary">
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- /Panel del formulario -->
+    </div>
+  </div>
+</div>
+  <!-- /Formulario agregar terminales -->
+ 

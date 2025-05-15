@@ -1,0 +1,61 @@
+  <!-- Tabla catálogo IPS -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h6 class="panel-title"><i class="icon-table"></i> <?php echo $this->titulo?></h6>
+    </div>
+    <div class="datatable-state-saving">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Número de Servicio</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Serie</th>
+          <th>Teléfono</th>
+          <th>Sucursal</th>
+          <th>Municipio</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach ($this->ips AS $si) { ?>
+        <tr>
+          <td><?php echo $si['numero']?></td>
+          <td><?php echo $si['marca']?></td>
+          <td><?php echo $si['modelo']?></td>
+          <td><?php echo $si['serie']?></td>
+          <td><?php echo $si['telefono']?></td>
+          <td><?php echo $si['sucursal']?></td>
+          <td><?php echo $si['municipio']?></td>
+          <td>
+            <div class="pull-center icons-group">
+              <a data-original-title="Detalles" data-placement="top" href="javascript:void(0);" onclick="location.href='<?php echo $this->urlDetalles . base64_encode($si['idTerminal'])?>/'" >
+                <i class="icon-info2"></i>
+              </a>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlActualizar . base64_encode($si['idTerminal'])?>/'">
+                <i class="icon-pencil"></i>
+              </a>
+              <?php if($si['numIP'] != "SIN IP"){ ?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlliberarIP.base64_encode($si['idTerminal']);?>/1/'">
+                <i class="icon-connection"></i>
+              </a>
+              <?php }else{?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlasignarIP . base64_encode($si['idTerminal'])?>/'">
+                <i class="icon-cog"></i>
+              </a>
+              <?php }?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlReporte . base64_encode($si['idCOMPUTADORA'])?>/'">
+                <i class="icon-paste2"></i>
+              </a>
+              <?php if($si['nomStatus'] == "Baja") { ?><a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlEliminar . base64_encode($si['idTerminal'])?>/'"><i class="icon-remove"></i></a>
+              <?php } else {?>
+              <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlBaja . base64_encode($si['idTerminal'])?>/'"><i class="icon-minus-circle2"></i></a>
+              <?php };?>
+            </div>
+          </td>
+        </tr><?php }?>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--/ Tabla catálogo IPS -->

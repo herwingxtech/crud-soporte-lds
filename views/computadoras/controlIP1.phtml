@@ -1,0 +1,103 @@
+<?php
+if(isset($this->mensaje)){
+?>
+  <!-- Callout -->
+  <div class="callout callout-<?php echo $this->alerta;?> fade in">
+  	<button type="button" class="close" data-dismiss="alert">×</button>
+  	<h5><?php echo $this->mensaje?></h5>
+    <?php if(isset($this->numMAC)){?>
+  	<p>la dirección física <strong><?php echo $this->datos['mac']?></strong> ya está registrada.</p>
+    <?php
+      }
+    ?>
+  </div>
+<!-- /callout -->
+<?php }?>
+
+<!-- Default datatable inside panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <i class="icon-table"></i> <?php echo $this->titulo?>
+    </h6>
+  </div>
+  <div class="datatable-tools">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>DIRECCIÓN</th>
+            <th>TIPO</th>
+            <th>COMENTARIOS</th>
+            <th>SUCURSAL</th>
+            <th>STATUS</th>
+            <th>FECHA</th>
+            <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->ips AS $ips) {
+        ?>
+          <tr>
+            <td><?php echo $ips['numIP']?></td>
+            <td><?php echo $ips['tipoIP']?></td>
+            <td><?php echo $ips['comentarioIP']?></td>
+            <td><?php echo $ips['sucursal']?></td>
+            <td><?php echo $ips['statusIP']?></td>
+            <td><?php echo $ips['fechaActualizarIP']?></td>
+            <td>
+              <div class="pull-center icons-group">
+                <?php
+                if($ips['statusIP'] == "Asignada"){
+                ?>
+                  <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-lock2"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a><i class="icon-info"></i>Está opción está en el catálogo</a></li>
+                    <li><a href="javascript:void(0)" onclick="location.href='<?php echo BASE_URL ?>computadoras/catalogo/'"><i class="icon-computer"></i> Ir al catálgo de computadoras</a></i>
+                  </ul>
+                <?php
+              }else{
+                if($ips['statusIP'] == 'Inactiva'){
+              ?>
+                <a data-toggle="modal" role="button" href="#form_modal"><i class="icon-unlocked"></i></a>
+                <div id="form_modal" class="modal fade" tabindex="-1" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							          <h4 class="modal-title"><i class="icon-config"></i> Reservar dirección IP</h4>
+                      </div>
+                      <form action="#" role="form">
+                        <div class="modal-body with-padding">
+                          <div class="block-inner text-danger">
+                            <h6 class="heading-hr">La dirección IP: <?php echo $ips['idIP']?></h6>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+								<button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-primary">reservar</button>
+							</div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <?php
+                }else{
+              ?>
+                  <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'computadoras/asignarIP/' . base64_encode($pcs['idIP'])?>/'">
+                    <i class="icon-lock3"></i>
+                  </a>
+             <?php
+                }
+              }
+                ?>
+  	           </div>
+            </td>
+          </tr>
+        <?php
+        }?>
+      </tbody>
+    </table>
+  </div>
+</div>

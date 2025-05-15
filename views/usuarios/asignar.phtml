@@ -1,0 +1,53 @@
+
+<!-- Separated form -->
+<div class="row">
+  <div class="col-md-6">
+    <!-- Separated form inside panel -->
+    <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+      <input type="hidden" name="asignar" value="4"/>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6>
+          </div>
+          <div class="panel-body">
+            <div class="block-inner">
+                <h6 class="heading-hr">
+                  <i class="icon-user"></i>
+                  <?php echo $this->_nombreCompleto?> <small class="display-block">Correo Electrónico: <?php echo $this->_email?></small>
+                  <i class="icon-direction"></i>
+                  <strong><?php echo $this->_nomSucursal?></strong>
+                  <small class="display-block">
+                   Departamento: <?php echo $this->_dep;?>
+                  </small>
+                </h6>
+              </div>
+            <div class="form-group">
+              <label class="col-md-2 control-label"><i class="icon-laptop"></i>Computadora:</label>
+              <div class="col-md-8">
+                <select name="pc" data-placeholder="Seleccionar computadora..." class="select-full required" tabindex="2">
+                  <option value=""></option>
+                  <?php foreach ($this->computadoras AS $pcs) { ?>
+                    <option value="<?php echo $pcs['idCOMPUTADORA'] ?>" <?php if(isset($this->datos) && $pcs['idCOMPUTADORA'] == $this->datos['nomComputadora']){ echo "selected";};?>><?php echo $pcs['nomComputadora']?></option>
+                  <?php }?>
+                </select>
+              </div>
+            </div>
+            
+
+              <div class="form-group">
+                  <label class="col-md-2 control-label"><i class="icon-info"></i>Observación:</label>
+                  <div class="col-md-10">
+                    <textarea rows="5" cols="5" name="observacion" placeholder="Observación..." class="elastic form-control"><?php if(isset($this->datos)){ echo $this->datos['observacion'];}?></textarea>
+                  </div>
+              </div>
+            <div class="form-actions text-right">
+              <input type="reset" onclick="location.href='<?php echo $this->urlCatalago;?>'" value="Cancelar" class="btn btn-danger">
+              <input type="submit" value="Asignar" class="btn btn-primary">
+            </div>
+          </div>
+        </div>
+    </form>
+    <!-- /separated form inside panel -->
+  </div>
+</div>
+<!-- /separated form -->

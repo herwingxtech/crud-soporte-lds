@@ -1,0 +1,54 @@
+<!-- Catálogo de dispostivos -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <i class="icon-table"></i> <?php echo $this->titulo?>
+    </h6>
+  </div>
+  <div class="datatable-state-saving">
+    <table class="table table-hover tablet-bordered">
+      <thead>
+        <tr>
+            <th>Dispositivo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Serie</th>
+            <th>Departamento</th>
+            <th>Sucursal</th>
+            <th>Status</th>
+            <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->dps AS $dps) {
+        ?>
+          <tr>
+            <td><?php echo $dps['nomDispositivo']?></td>
+            <td><?php echo $dps['marcaDispositivo']?></td>
+            <td><?php echo $dps['modeloDispositivo']?></td>
+            <td><?php echo $dps['tipoDispositivo']?></td>
+            <td><?php echo $dps['serieDispositivo']?></td>
+            <td><?php echo $dps['depDispositivo']?></td>
+            <td><?php echo $dps['nombreSucursal']?></td>
+            <td><?php echo $dps['status']?></td>
+            <td>
+              <div class="pull-center icons-group">
+    		        <a data-original-title="Detalles" data-placement="top" href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'dispositivos/detalles/' . base64_encode($dps['idDISPOSITIVO'])?>/'" ><i class="icon-info"></i></a>
+  		          <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'dispositivos/actualizar/' . base64_encode($dps['idDISPOSITIVO'])?>/'">
+                  <i class="icon-pencil"></i>
+                </a>
+    		        <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'dispositivos/reporte/' . base64_encode($dps['idDISPOSITIVO'])?>/'">
+                  <i class="icon-paste2"></i>
+                </a>
+                <a href="#"><i class="icon-remove"></i></a>
+  	           </div>
+            </td>
+          </tr>
+        <?php
+        }?>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /Catálogo de dispostivos -->

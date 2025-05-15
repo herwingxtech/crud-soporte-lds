@@ -1,0 +1,34 @@
+
+<div class="row">
+  <div class="col-md-6">
+    <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+      <input type="hidden" name="eliminar" value="4"/>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+        <div class="panel-body">
+          <!-- General information -->
+          <div class="block-inner">
+            <div class="block-inner">
+              <h6 class="heading-hr">
+              <i class="icon-laptop"></i> <?php if(isset($this->_nombre)) { echo  $this->_nombre; } ?> <small class="display-block">Dirección IP: <?php echo $this->_ip?></small>
+              </h6>
+            </div>
+          </div>
+  				<div class="form-group">
+  				  <div class="row">
+  				    <div class="col-md-8">
+  				      <h6 class="text-danger"> ¿Estaś seguro de que quieres eliminar el registro de la  base de datos?</h6>
+  				    </div>
+  				  </div>
+  				</div>
+          <div class="form-actions text-right">
+            <input type="reset" onclick="location.href='<?php echo $this->urlCatalago;?>'" value="NO" class="btn btn-danger">
+            <input type="submit" value="SI" class="btn btn-primary" >
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+</div>

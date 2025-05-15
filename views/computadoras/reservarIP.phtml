@@ -1,0 +1,45 @@
+<?php if(isset($this->mensaje)){ ?>
+  <!-- Alertas -->
+  <div class="callout callout-<?php echo $this->alerta;?> fade in">
+  	<button type="button" class="close" data-dismiss="alert">×</button>
+  	<h5><?php echo $this->mensaje?></h5>
+  </div>
+<!-- /Alertas -->
+<?php }?>
+
+<div class="row">
+  <div class="col-md-6">
+    <form class="form-horizontal form-separate validate" action="" role="form" method="post">
+      <input type="hidden" name="reservarip" value="4"/>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+        <div class="panel-body">
+          <!-- General information -->
+          <div class="block-inner">
+            <div class="block-inner">
+              <h6 class="heading-hr">
+              <i class="icon-laptop"></i> <?php if(isset($this->_nombre)) { echo  $this->_nombre; } ?> <small class="display-block">Dirección IP: <?php echo $this->_ip?></small>
+              </h6>
+            </div>
+          </div>
+  				<div class="row">
+  				  <div class="form-group">
+  				    <div class="col-md-12">
+  				      <h6 class="text-danger"> <?php echo $this->advertencia ?></h6>
+  				    </div>
+
+              <div class="col-md-12">
+                <label>Escribir comentario:</label>
+                <textarea name="comentarioIP" placeholder="Comentario" class="form-control" value="" type="text"></textarea>
+              </div>
+  				  </div>
+  				</div>
+          <div class="form-actions text-right">
+            <input type="reset" onclick="location.href='<?php echo BASE_URL?>computadoras/catalogo/'" value="NO" class="btn btn-danger">
+            <input type="submit" value="SI" class="btn btn-primary" >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>

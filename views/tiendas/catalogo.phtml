@@ -1,0 +1,53 @@
+<!-- Default datatable inside panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <i class="icon-table"></i> <?php echo $this->titulo?>
+    </h6>
+  </div>
+  <div class="datatable-state-saving">
+    <table class="table table-hover tablet-bordered ">
+      <thead>
+        <tr>
+            <th>Sucursal</th>
+            <th>Dirección</th>
+            <th>Número Exterior</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Municipio</th>
+            <th>Localidad</th>
+            <th>Códipo Postal</th>
+            <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->tdas AS $tdas) {
+        ?>
+          <tr>
+            <td><?php echo $tdas['nombreSucursal']?></td>
+            <td><?php echo $tdas['direccionSucursal']?></td>
+            <td>#<?php echo $tdas['numSucursal']?></td>
+            <td><?php echo $tdas['telefonoSucursal']?></td>
+            <td><?php echo $tdas['estado']?></td>
+            <td><?php echo $tdas['municipio']?></td>
+            <td><?php echo $tdas['tipo'] . " " . $tdas['asentamiento']?></td>
+            <td><?php echo $tdas['cp']?></td>
+            <td>
+              <div class="pull-center icons-group">
+    		        <a data-original-title="Detalles" data-placement="top" href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'dispositivos/detalles/' . base64_encode($dps['idDISPOSITIVO'])?>/'" ><i class="icon-info"></i></a>
+  		          <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'dispositivos/actualizar/' . base64_encode($dps['idDISPOSITIVO'])?>/'">
+                  <i class="icon-pencil"></i>
+                </a>
+    		        <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL . 'computadoras/reporte/' . base64_encode($dps['idDISPOSITIVO'])?>/'">
+                  <i class="icon-paste2"></i>
+                </a>
+                <a href="#"><i class="icon-remove"></i></a>
+  	           </div>
+            </td>
+          </tr>
+        <?php
+        }?>
+      </tbody>
+    </table>
+  </div>
+</div>

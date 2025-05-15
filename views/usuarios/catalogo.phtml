@@ -1,0 +1,76 @@
+<?php
+#Vista del catálogo de usuarios
+if(isset($this->mensaje)){
+?>
+  <!-- Callout -->
+  <div class="callout callout-<?php echo $this->alerta;?> fade in">
+  	<button type="button" class="close" data-dismiss="alert">×</button>
+  	<h5><?php echo $this->mensaje?></h5>
+    <?php if(isset($this->numMAC)){?>
+  	<p>la dirección física <strong><?php echo $this->datos['mac']?></strong> ya está registrada.</p>
+    <?php
+      }
+    ?>
+  </div>
+<!-- /callout -->
+<?php }?>
+
+<!-- Default datatable inside panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h6 class="panel-title">
+      <i class="icon-table"></i> <?php echo $this->titulo?>
+    </h6>
+  </div>
+  <div class="datatable-state-saving">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Nombre(s)</th>
+            <th>Email</th>
+            <th>Clave</th>
+            <th>Departamento</th>
+            <th>Sucursal</th>
+            <th>Municipio</th>
+            <th>Status</th>
+            <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($this->usuarios AS $usrs) {
+        ?>
+          <tr>
+            <td>
+              <a class="example-image-link" href="<?php echo BASE_PUBLIC_IMG .'avatares/' . $usrs['avatarUsuario']?>" data-lightbox="example-1"></a>
+                <img class="img-thumbnail" src="<?php echo BASE_PUBLIC_IMG .'avatares/'.$usrs['idUSUARIO']. '/thumb_'. $usrs['avatarUsuario']?>" alt="image-1" />
+            </td>
+            <td><?php echo $usrs['nomUsuario']. " " . $usrs['apellidosUsuario']?></td>
+            <td><?php echo $usrs['mailUsuario']?></td>
+            <td><?php echo $usrs['claveEmail']?></td>
+            <td><?php echo $usrs['depUsuario']?></td>
+            <td><?php echo $usrs['nombreSucursal']?></td>
+            <td><?php echo $usrs['municipio']?></td>
+            <td><?php echo $usrs['status']?></td>
+            <td>
+              <div class="pull-center icons-group">
+    		        <a data-original-title="Detalles" data-placement="top" href="javascript:void(0);" onclick="location.href='<?php echo $this->urlDetalles . base64_encode($usrs['idUSUARIO'])?>/'" ><i class="icon-info2"></i></a>
+  		          <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlActualizar . base64_encode($usrs['idUSUARIO'])?>/'">
+                  <i class="icon-pencil"></i>
+                </a>
+                <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlRegstrarlave . base64_encode($usrs['idUSUARIO'])?>/'">
+                  <i class="icon-key"></i>
+                </a>
+                <a href="javascript:void(0);" onclick="location.href='<?php echo $this->urlAsignar . base64_encode($usrs['idUSUARIO'])?>/'">
+                  <i class="icon-plus-circle2"></i>
+                </a>
+                <a rel="tooltip" data-original-title="Eliminar" idUser="<?php echo base64_encode($usrs['idUSUARIO'])?>" class="delete-user" ><i class="icon-remove" ></i></a>
+  	           </div>
+            </td>
+          </tr>
+        <?php
+        }?>
+      </tbody>
+    </table>
+  </div>
+</div>

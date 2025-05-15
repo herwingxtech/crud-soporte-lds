@@ -1,0 +1,27 @@
+<!-- Info blocks -->
+<ul class="info-blocks">
+  <li class="bg-success">
+      <div class="top-info">
+          <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL?>usuarios/agregar/'">Usuarios</a>
+          <small>Nuevo registro</small>
+      </div>
+      <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL?>usuarios/agregar/'"><i class="icon-user-plus"></i></a>
+      <span class="bottom-info bg-primary">No updates</span>
+  </li>
+  <li class="bg-info">
+      <div class="top-info">
+          <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL?>usuarios/catalogo/'">Catálogo</a>
+          <small>Información Usuarios</small>
+      </div>
+      <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL?>usuarios/catalogo/'"><i class="icon-notebook"></i></a>
+      <span class="bottom-info bg-primary">  <?php echo $this->_usuariosActivos;?> </span>
+  </li>
+  <li class="bg-info">
+      <div class="top-info">
+          <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL?>usuarios/relacion/'">Relación</a>
+          <small>Usuarios-Computadoras</small>
+      </div>
+      <a href="javascript:void(0);" onclick="location.href='<?php echo BASE_URL?>usuarios/relacion/'"><i class="icon-signup"></i></a>
+      <span class="bottom-info bg-primary">  <?php echo $this->_usuariosActivos;?> </span>
+  </li>
+</ul>

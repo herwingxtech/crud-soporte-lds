@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-6">
+    <form class="form-horizontal validate" action="" role="form" method="post">
+      <input type="hidden" name="baja" value="4"/>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h6 class="panel-title"><i class="icon-page-break"></i> <?php echo $this->titulo;?></h6></div>
+        <div class="panel-body">
+          <!-- Información general -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label text-right"><i class="icon-laptop"></i>Computadora:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static">
+                <?php echo $this->_nombre;?>
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label text-right"><i class="icon-bookmarks"></i>Marca:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static">
+                <?php echo $this->_marca;?>
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label text-right"><i class="icon-<?php echo $this->_iconSistem?>"></i>SO:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static">
+                <?php echo $this->_so;?>
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label text-right"><i class="icon-direction"></i>Ubicación:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static">
+                <strong><?php echo $this->_nomSucursal?></strong>, <?php echo $this->_dep?>
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label text-right"><i class="icon-connection"></i>Dirección IP:</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><?php echo $this->_ip?>
+              </p>
+            </div>
+          </div>
+          <!-- /Información general-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label text-right"><i class="icon-info"></i>Alerta:</label>
+            <div class="col-sm-10">
+              <h6 class="text-danger">¿Estaś seguro de que quieres dar de  baja a la computadora?</h6>
+            </div>
+           </div>
+          <div class="form-actions text-right">
+            <input type="reset" onclick="location.href='<?php echo $this->urlCatalogo;?>'" value="NO" class="btn btn-danger">
+            <input type="submit" value="SI" class="btn btn-primary" >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
